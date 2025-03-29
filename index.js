@@ -37,17 +37,25 @@ function createQuestion() {
 	
 	switch (randomChoice) {
 		case 0:
-			if (algebraOn) { //TODO
-				question.textContent = `${num1} + ${num2} = ?`;
+			if (algebraOn) { 
+				question.textContent = `𝓧 - ${num1} = ${num2}`;
+				return num1 + num2
 			}
-
-			question.textContent = `${num1} + ${num2} = ?`;
-			return num1 + num2;
+			else {
+				question.textContent = `${num1} + ${num2} = ?`;
+				return num1 + num2;
+			}
 		case 1: 
 			// If difficulty reaches 10, allow negatives
 			if (difficulty > 9) {
-				question.textContent = `${num1} - ${num2} = ?`;
-				return num1 - num2;
+				if (algebraOn) {
+					question.textContent = `𝓧 + ${num1} = ${num2}`;
+					return num2 - num1;
+				}
+				else {
+					question.textContent = `${num1} - ${num2} = ?`;
+					return num1 - num2;
+				}
 			}
 			else {
 				if (num1 >= num2) {
@@ -60,13 +68,25 @@ function createQuestion() {
 				}
 			}
 		case 2:
-			question.textContent = `${num3} x ${num4} = ?`;
-			return num3 * num4;
+			if (algebraOn) {
+				question.textContent = `𝓧/${num3} = ${num4}`;
+				return num3 * num4;
+			}
+			else {
+				question.textContent = `${num3} x ${num4} = ?`;
+				return num3 * num4;
+			}
 		case 3:
 			const num5 = num3 * num4;
-			question.textContent = `${num5} / ${num3} = ?`;
-			return num5 / num3;
-	}
+			if (algebraOn) {
+				question.textContent = `${num3}𝓧 = ${num5}`;
+				return num5 / num3;
+			}
+			else {
+				question.textContent = `${num5} / ${num3} = ?`;
+				return num5 / num3;
+			}
+		}
 }
 
 function checkAnswer(userAnswer, questionAnswer) {
